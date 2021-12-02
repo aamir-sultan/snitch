@@ -1,0 +1,2321 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+    
+    
+      
+        <title>snRuntime/include/snitch_cluster_peripheral.h - Snitch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.62128196.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#snruntimeincludesnitch_cluster_peripheralh" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Snitch" class="md-header__button md-logo" aria-label="Snitch" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Snitch
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              snRuntime/include/snitch_cluster_peripheral.h
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pulp-platform/snitch/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pulp-platform/snitch
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Snitch" class="md-nav__button md-logo" aria-label="Snitch" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Snitch
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pulp-platform/snitch/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pulp-platform/snitch
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          User Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ug/getting_started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ug/example_trace.html" class="md-nav__link">
+        Trace Example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ug/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ug/directory_structure/" class="md-nav__link">
+        Directory Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ug/documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Systems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Systems" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Snitch Cluster
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Snitch Cluster" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Snitch Cluster
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ug/snitch_cluster/" class="md-nav__link">
+        Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../schema-doc/snitch_cluster/" class="md-nav__link">
+        Schema
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Occamy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Occamy" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Occamy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ug/occamy/" class="md-nav__link">
+        Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../schema-doc/occamy/" class="md-nav__link">
+        Schema
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Reference Manual
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rm/snitch/" class="md-nav__link">
+        Snitch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rm/snitch_cluster/" class="md-nav__link">
+        Snitch Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rm/reqrsp_interface/" class="md-nav__link">
+        Reqrsp Interface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rm/custom_instructions/" class="md-nav__link">
+        Custom Instructions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Snitch Runtime
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Snitch Runtime" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Snitch Runtime
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Pages/" class="md-nav__link">
+        Pages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/" class="md-nav__link">
+        Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modules/" class="md-nav__link">
+        Modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Namespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#defines" class="md-nav__link">
+    Defines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros-documentation" class="md-nav__link">
+    Macros Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Macros Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_param_num_perf_counters" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PARAM_NUM_PERF_COUNTERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_param_reg_width" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PARAM_REG_WIDTH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_cycle_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_CYCLE_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_tcdm_accessed_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_ACCESSED_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_tcdm_congested_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_CONGESTED_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_issue_fpu_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_issue_fpu_seq_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_SEQ_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_issue_core_to_fpu_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_CORE_TO_FPU_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_aw_stall_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_STALL_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_ar_stall_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_STALL_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_r_stall_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_STALL_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_w_stall_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_STALL_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_buf_w_stall_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_W_STALL_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_buf_r_stall_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_R_STALL_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_aw_done_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_DONE_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_aw_bw_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_BW_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_ar_done_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_DONE_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_ar_bw_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_BW_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_r_done_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_DONE_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_r_bw_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_BW_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_w_done_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_DONE_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_w_bw_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_BW_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_b_done_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_B_DONE_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_dma_busy_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUSY_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_icache_miss_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_MISS_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_icache_hit_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_HIT_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_icache_prefetch_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_PREFETCH_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_icache_double_hit_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_DOUBLE_HIT_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_0_icache_stall_0_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_STALL_0_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_cycle_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_CYCLE_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_tcdm_accessed_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_ACCESSED_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_tcdm_congested_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_CONGESTED_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_issue_fpu_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_issue_fpu_seq_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_SEQ_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_issue_core_to_fpu_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_CORE_TO_FPU_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_aw_stall_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_STALL_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_ar_stall_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_STALL_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_r_stall_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_STALL_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_w_stall_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_STALL_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_buf_w_stall_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_W_STALL_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_buf_r_stall_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_R_STALL_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_aw_done_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_DONE_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_aw_bw_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_BW_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_ar_done_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_DONE_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_ar_bw_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_BW_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_r_done_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_DONE_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_r_bw_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_BW_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_w_done_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_DONE_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_w_bw_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_BW_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_b_done_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_B_DONE_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_dma_busy_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUSY_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_icache_miss_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_MISS_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_icache_hit_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_HIT_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_icache_prefetch_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_PREFETCH_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_icache_double_hit_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_DOUBLE_HIT_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_enable_1_icache_stall_1_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_STALL_1_BIT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_hart_select_field_width" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELD_WIDTH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_hart_select_fields_per_reg" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELDS_PER_REG
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_multireg_count" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_MULTIREG_COUNT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_0_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_0_hart_select_0_mask" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_MASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_0_hart_select_0_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_0_hart_select_0_field" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_FIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_1_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_1_hart_select_1_mask" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_MASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_1_hart_select_1_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hart_select_1_hart_select_1_field" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_FIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_perf_counter_field_width" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELD_WIDTH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_perf_counter_fields_per_reg" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELDS_PER_REG
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_multireg_count" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_MULTIREG_COUNT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_0_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_0_perf_counter_0_mask" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_MASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_0_perf_counter_0_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_0_perf_counter_0_field" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_FIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_1_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_1_perf_counter_1_mask" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_MASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_1_perf_counter_1_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_perf_counter_1_perf_counter_1_field" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_FIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_set_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_set_cl_clint_set_mask" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_MASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_set_cl_clint_set_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_set_cl_clint_set_field" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_FIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_clear_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_clear_cl_clint_clear_mask" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_MASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_clear_cl_clint_clear_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_cl_clint_clear_cl_clint_clear_field" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_FIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hw_barrier_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hw_barrier_hw_barrier_mask" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_MASK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hw_barrier_hw_barrier_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_hw_barrier_hw_barrier_field" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_FIELD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_icache_prefetch_enable_reg_offset" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_REG_OFFSET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-snitch_cluster_peripheral_icache_prefetch_enable_icache_prefetch_enable_bit" class="md-nav__link">
+    define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_ICACHE_PREFETCH_ENABLE_BIT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/pulp-platform/snitch/edit/master/docs/runtime/Files/snitch__cluster__peripheral_8h.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="snruntimeincludesnitch_cluster_peripheralh">snRuntime/include/snitch_cluster_peripheral.h</h1>
+<h2 id="defines">Defines</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-param-num-perf-counters">SNITCH_CLUSTER_PERIPHERAL_PARAM_NUM_PERF_COUNTERS</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-param-reg-width">SNITCH_CLUSTER_PERIPHERAL_PARAM_REG_WIDTH</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-reg-offset">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-cycle-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_CYCLE_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-tcdm-accessed-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_ACCESSED_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-tcdm-congested-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_CONGESTED_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-issue-fpu-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-issue-fpu-seq-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_SEQ_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-issue-core-to-fpu-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_CORE_TO_FPU_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-aw-stall-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_STALL_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-ar-stall-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_STALL_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-r-stall-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_STALL_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-w-stall-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_STALL_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-buf-w-stall-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_W_STALL_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-buf-r-stall-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_R_STALL_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-aw-done-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_DONE_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-aw-bw-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_BW_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-ar-done-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_DONE_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-ar-bw-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_BW_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-r-done-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_DONE_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-r-bw-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_BW_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-w-done-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_DONE_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-w-bw-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_BW_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-b-done-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_B_DONE_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-dma-busy-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUSY_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-icache-miss-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_MISS_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-icache-hit-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_HIT_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-icache-prefetch-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_PREFETCH_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-icache-double-hit-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_DOUBLE_HIT_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-0-icache-stall-0-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_STALL_0_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-reg-offset">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-cycle-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_CYCLE_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-tcdm-accessed-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_ACCESSED_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-tcdm-congested-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_CONGESTED_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-issue-fpu-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-issue-fpu-seq-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_SEQ_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-issue-core-to-fpu-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_CORE_TO_FPU_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-aw-stall-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_STALL_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-ar-stall-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_STALL_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-r-stall-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_STALL_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-w-stall-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_STALL_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-buf-w-stall-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_W_STALL_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-buf-r-stall-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_R_STALL_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-aw-done-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_DONE_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-aw-bw-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_BW_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-ar-done-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_DONE_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-ar-bw-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_BW_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-r-done-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_DONE_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-r-bw-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_BW_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-w-done-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_DONE_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-w-bw-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_BW_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-b-done-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_B_DONE_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-dma-busy-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUSY_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-icache-miss-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_MISS_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-icache-hit-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_HIT_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-icache-prefetch-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_PREFETCH_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-icache-double-hit-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_DOUBLE_HIT_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-enable-1-icache-stall-1-bit">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_STALL_1_BIT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-hart-select-field-width">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELD_WIDTH</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-hart-select-fields-per-reg">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELDS_PER_REG</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-multireg-count">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_MULTIREG_COUNT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-0-reg-offset">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-0-hart-select-0-mask">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_MASK</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-0-hart-select-0-offset">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-0-hart-select-0-field">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_FIELD</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-1-reg-offset">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-1-hart-select-1-mask">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_MASK</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-1-hart-select-1-offset">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hart-select-1-hart-select-1-field">SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_FIELD</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-perf-counter-field-width">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELD_WIDTH</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-perf-counter-fields-per-reg">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELDS_PER_REG</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-multireg-count">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_MULTIREG_COUNT</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-0-reg-offset">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-0-perf-counter-0-mask">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_MASK</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-0-perf-counter-0-offset">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-0-perf-counter-0-field">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_FIELD</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-1-reg-offset">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-1-perf-counter-1-mask">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_MASK</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-1-perf-counter-1-offset">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-perf-counter-1-perf-counter-1-field">SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_FIELD</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-set-reg-offset">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-set-cl-clint-set-mask">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_MASK</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-set-cl-clint-set-offset">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-set-cl-clint-set-field">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_FIELD</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-clear-reg-offset">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-clear-cl-clint-clear-mask">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_MASK</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-clear-cl-clint-clear-offset">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-cl-clint-clear-cl-clint-clear-field">SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_FIELD</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hw-barrier-reg-offset">SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hw-barrier-hw-barrier-mask">SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_MASK</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hw-barrier-hw-barrier-offset">SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-hw-barrier-hw-barrier-field">SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_FIELD</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-icache-prefetch-enable-reg-offset">SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_REG_OFFSET</a></strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/snitch/runtime/Files/snitch__cluster__peripheral_8h/#define-snitch-cluster-peripheral-icache-prefetch-enable-icache-prefetch-enable-bit">SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_ICACHE_PREFETCH_ENABLE_BIT</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="macros-documentation">Macros Documentation</h2>
+<h3 id="define-snitch_cluster_peripheral_param_num_perf_counters">define SNITCH_CLUSTER_PERIPHERAL_PARAM_NUM_PERF_COUNTERS</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PARAM_NUM_PERF_COUNTERS 2</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_param_reg_width">define SNITCH_CLUSTER_PERIPHERAL_PARAM_REG_WIDTH</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PARAM_REG_WIDTH 64</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_REG_OFFSET 0x0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_cycle_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_CYCLE_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_CYCLE_0_BIT 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_tcdm_accessed_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_ACCESSED_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_ACCESSED_0_BIT 1</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_tcdm_congested_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_CONGESTED_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_CONGESTED_0_BIT 2</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_issue_fpu_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_0_BIT 3</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_issue_fpu_seq_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_SEQ_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_SEQ_0_BIT 4</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_issue_core_to_fpu_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_CORE_TO_FPU_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_CORE_TO_FPU_0_BIT     5</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_aw_stall_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_STALL_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_STALL_0_BIT 6</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_ar_stall_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_STALL_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_STALL_0_BIT 7</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_r_stall_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_STALL_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_STALL_0_BIT 8</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_w_stall_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_STALL_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_STALL_0_BIT 9</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_buf_w_stall_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_W_STALL_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_W_STALL_0_BIT 10</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_buf_r_stall_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_R_STALL_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_R_STALL_0_BIT 11</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_aw_done_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_DONE_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_DONE_0_BIT 12</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_aw_bw_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_BW_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_BW_0_BIT 13</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_ar_done_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_DONE_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_DONE_0_BIT 14</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_ar_bw_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_BW_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_BW_0_BIT 15</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_r_done_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_DONE_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_DONE_0_BIT 16</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_r_bw_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_BW_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_BW_0_BIT 17</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_w_done_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_DONE_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_DONE_0_BIT 18</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_w_bw_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_BW_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_BW_0_BIT 19</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_b_done_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_B_DONE_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_B_DONE_0_BIT 20</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_dma_busy_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUSY_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUSY_0_BIT 21</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_icache_miss_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_MISS_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_MISS_0_BIT 22</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_icache_hit_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_HIT_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_HIT_0_BIT 23</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_icache_prefetch_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_PREFETCH_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_PREFETCH_0_BIT 24</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_icache_double_hit_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_DOUBLE_HIT_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_DOUBLE_HIT_0_BIT     25</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_0_icache_stall_0_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_STALL_0_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_STALL_0_BIT 26</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_REG_OFFSET 0x8</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_cycle_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_CYCLE_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_CYCLE_1_BIT 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_tcdm_accessed_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_ACCESSED_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_ACCESSED_1_BIT 1</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_tcdm_congested_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_CONGESTED_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_CONGESTED_1_BIT 2</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_issue_fpu_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_1_BIT 3</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_issue_fpu_seq_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_SEQ_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_SEQ_1_BIT 4</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_issue_core_to_fpu_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_CORE_TO_FPU_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_CORE_TO_FPU_1_BIT     5</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_aw_stall_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_STALL_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_STALL_1_BIT 6</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_ar_stall_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_STALL_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_STALL_1_BIT 7</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_r_stall_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_STALL_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_STALL_1_BIT 8</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_w_stall_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_STALL_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_STALL_1_BIT 9</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_buf_w_stall_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_W_STALL_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_W_STALL_1_BIT 10</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_buf_r_stall_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_R_STALL_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_R_STALL_1_BIT 11</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_aw_done_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_DONE_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_DONE_1_BIT 12</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_aw_bw_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_BW_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_BW_1_BIT 13</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_ar_done_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_DONE_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_DONE_1_BIT 14</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_ar_bw_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_BW_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_BW_1_BIT 15</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_r_done_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_DONE_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_DONE_1_BIT 16</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_r_bw_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_BW_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_BW_1_BIT 17</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_w_done_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_DONE_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_DONE_1_BIT 18</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_w_bw_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_BW_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_BW_1_BIT 19</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_b_done_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_B_DONE_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_B_DONE_1_BIT 20</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_dma_busy_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUSY_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUSY_1_BIT 21</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_icache_miss_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_MISS_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_MISS_1_BIT 22</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_icache_hit_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_HIT_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_HIT_1_BIT 23</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_icache_prefetch_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_PREFETCH_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_PREFETCH_1_BIT 24</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_icache_double_hit_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_DOUBLE_HIT_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_DOUBLE_HIT_1_BIT     25</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_enable_1_icache_stall_1_bit">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_STALL_1_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_STALL_1_BIT 26</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_hart_select_field_width">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELD_WIDTH</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELD_WIDTH 10</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_hart_select_fields_per_reg">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELDS_PER_REG</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELDS_PER_REG 6</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_multireg_count">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_MULTIREG_COUNT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_MULTIREG_COUNT 2</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_0_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_REG_OFFSET 0x10</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_0_hart_select_0_mask">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_MASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_MASK 0x3ff</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_0_hart_select_0_offset">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_OFFSET 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_0_hart_select_0_field">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_FIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_FIELD     ((bitfield_field32_t){                                                  \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_MASK, \</span>
+<span class="cp">        .index =                                                            \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_OFFSET})</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_1_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_REG_OFFSET 0x18</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_1_hart_select_1_mask">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_MASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_MASK 0x3ff</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_1_hart_select_1_offset">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_OFFSET 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hart_select_1_hart_select_1_field">define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_FIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_FIELD     ((bitfield_field32_t){                                                  \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_MASK, \</span>
+<span class="cp">        .index =                                                            \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_OFFSET})</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_perf_counter_field_width">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELD_WIDTH</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELD_WIDTH 48</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_perf_counter_fields_per_reg">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELDS_PER_REG</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELDS_PER_REG 1</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_multireg_count">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_MULTIREG_COUNT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_MULTIREG_COUNT 2</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_0_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_REG_OFFSET 0x20</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_0_perf_counter_0_mask">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_MASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_MASK     0xffffffffffff</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_0_perf_counter_0_offset">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_OFFSET 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_0_perf_counter_0_field">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_FIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_FIELD     ((bitfield_field32_t){                                                    \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_MASK, \</span>
+<span class="cp">        .index =                                                              \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_OFFSET})</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_1_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_REG_OFFSET 0x28</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_1_perf_counter_1_mask">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_MASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_MASK     0xffffffffffff</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_1_perf_counter_1_offset">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_OFFSET 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_perf_counter_1_perf_counter_1_field">define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_FIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_FIELD     ((bitfield_field32_t){                                                    \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_MASK, \</span>
+<span class="cp">        .index =                                                              \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_OFFSET})</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_set_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_REG_OFFSET 0x30</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_set_cl_clint_set_mask">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_MASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_MASK 0xffffffff</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_set_cl_clint_set_offset">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_OFFSET 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_set_cl_clint_set_field">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_FIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_FIELD     ((bitfield_field32_t){                                                \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_MASK, \</span>
+<span class="cp">        .index = SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_OFFSET})</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_clear_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_REG_OFFSET 0x38</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_clear_cl_clint_clear_mask">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_MASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_MASK 0xffffffff</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_clear_cl_clint_clear_offset">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_OFFSET 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_cl_clint_clear_cl_clint_clear_field">define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_FIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_FIELD     ((bitfield_field32_t){                                                    \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_MASK, \</span>
+<span class="cp">        .index =                                                              \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_OFFSET})</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hw_barrier_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_REG_OFFSET 0x40</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hw_barrier_hw_barrier_mask">define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_MASK</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_MASK 0xffffffff</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hw_barrier_hw_barrier_offset">define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_OFFSET 0</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_hw_barrier_hw_barrier_field">define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_FIELD</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_FIELD     ((bitfield_field32_t){                                            \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_MASK, \</span>
+<span class="cp">        .index = SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_OFFSET})</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_icache_prefetch_enable_reg_offset">define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_REG_OFFSET</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_REG_OFFSET 0x48</span>
+</code></pre></div>
+<h3 id="define-snitch_cluster_peripheral_icache_prefetch_enable_icache_prefetch_enable_bit">define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_ICACHE_PREFETCH_ENABLE_BIT</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_ICACHE_PREFETCH_ENABLE_BIT     0</span>
+</code></pre></div>
+<h2 id="source-code">Source code</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Generated register defines for snitch_cluster_peripheral</span>
+
+<span class="c1">// Copyright information found in source file:</span>
+<span class="c1">// Copyright 2020 ETH Zurich and University of Bologna.</span>
+
+<span class="c1">// Licensing information found in source file:</span>
+<span class="c1">// Licensed under Solderpad Hardware License, Version 0.51, see LICENSE for</span>
+<span class="c1">// details. SPDX-License-Identifier: SHL-0.51</span>
+
+<span class="cp">#ifndef _SNITCH_CLUSTER_PERIPHERAL_REG_DEFS_</span>
+<span class="cp">#define _SNITCH_CLUSTER_PERIPHERAL_REG_DEFS_</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#endif</span>
+<span class="c1">// Number of performance counters</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PARAM_NUM_PERF_COUNTERS 2</span>
+
+<span class="c1">// Register width</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PARAM_REG_WIDTH 64</span>
+
+<span class="c1">// Enable particular performance counter and start tracking. (common</span>
+<span class="c1">// parameters)</span>
+<span class="c1">// Enable particular performance counter and start tracking.</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_REG_OFFSET 0x0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_CYCLE_0_BIT 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_ACCESSED_0_BIT 1</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_TCDM_CONGESTED_0_BIT 2</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_0_BIT 3</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_FPU_SEQ_0_BIT 4</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ISSUE_CORE_TO_FPU_0_BIT \</span>
+<span class="cp">    5</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_STALL_0_BIT 6</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_STALL_0_BIT 7</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_STALL_0_BIT 8</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_STALL_0_BIT 9</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_W_STALL_0_BIT 10</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUF_R_STALL_0_BIT 11</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_DONE_0_BIT 12</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AW_BW_0_BIT 13</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_DONE_0_BIT 14</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_AR_BW_0_BIT 15</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_DONE_0_BIT 16</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_R_BW_0_BIT 17</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_DONE_0_BIT 18</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_W_BW_0_BIT 19</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_B_DONE_0_BIT 20</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_DMA_BUSY_0_BIT 21</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_MISS_0_BIT 22</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_HIT_0_BIT 23</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_PREFETCH_0_BIT 24</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_DOUBLE_HIT_0_BIT \</span>
+<span class="cp">    25</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_0_ICACHE_STALL_0_BIT 26</span>
+
+<span class="c1">// Enable particular performance counter and start tracking.</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_REG_OFFSET 0x8</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_CYCLE_1_BIT 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_ACCESSED_1_BIT 1</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_TCDM_CONGESTED_1_BIT 2</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_1_BIT 3</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_FPU_SEQ_1_BIT 4</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ISSUE_CORE_TO_FPU_1_BIT \</span>
+<span class="cp">    5</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_STALL_1_BIT 6</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_STALL_1_BIT 7</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_STALL_1_BIT 8</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_STALL_1_BIT 9</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_W_STALL_1_BIT 10</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUF_R_STALL_1_BIT 11</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_DONE_1_BIT 12</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AW_BW_1_BIT 13</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_DONE_1_BIT 14</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_AR_BW_1_BIT 15</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_DONE_1_BIT 16</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_R_BW_1_BIT 17</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_DONE_1_BIT 18</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_W_BW_1_BIT 19</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_B_DONE_1_BIT 20</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_DMA_BUSY_1_BIT 21</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_MISS_1_BIT 22</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_HIT_1_BIT 23</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_PREFETCH_1_BIT 24</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_DOUBLE_HIT_1_BIT \</span>
+<span class="cp">    25</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_ENABLE_1_ICACHE_STALL_1_BIT 26</span>
+
+<span class="c1">// Select from which hart in the cluster, starting from `0`,</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELD_WIDTH 10</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_HART_SELECT_FIELDS_PER_REG 6</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_MULTIREG_COUNT 2</span>
+
+<span class="c1">// Select from which hart in the cluster, starting from `0`,</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_REG_OFFSET 0x10</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_MASK 0x3ff</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_OFFSET 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_FIELD         \</span>
+<span class="cp">    ((bitfield_field32_t){                                                  \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_MASK, \</span>
+<span class="cp">        .index =                                                            \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_0_HART_SELECT_0_OFFSET})</span>
+
+<span class="c1">// Select from which hart in the cluster, starting from `0`,</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_REG_OFFSET 0x18</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_MASK 0x3ff</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_OFFSET 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_FIELD         \</span>
+<span class="cp">    ((bitfield_field32_t){                                                  \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_MASK, \</span>
+<span class="cp">        .index =                                                            \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_HART_SELECT_1_HART_SELECT_1_OFFSET})</span>
+
+<span class="c1">// Performance counter. Set corresponding PERF_COUNTER_ENABLE bits depending</span>
+<span class="c1">// on what</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELD_WIDTH 48</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_PERF_COUNTER_FIELDS_PER_REG 1</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_MULTIREG_COUNT 2</span>
+
+<span class="c1">// Performance counter. Set corresponding PERF_COUNTER_ENABLE bits depending</span>
+<span class="c1">// on what</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_REG_OFFSET 0x20</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_MASK \</span>
+<span class="cp">    0xffffffffffff</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_OFFSET 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_FIELD         \</span>
+<span class="cp">    ((bitfield_field32_t){                                                    \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_MASK, \</span>
+<span class="cp">        .index =                                                              \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_0_PERF_COUNTER_0_OFFSET})</span>
+
+<span class="c1">// Performance counter. Set corresponding PERF_COUNTER_ENABLE bits depending</span>
+<span class="c1">// on what</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_REG_OFFSET 0x28</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_MASK \</span>
+<span class="cp">    0xffffffffffff</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_OFFSET 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_FIELD         \</span>
+<span class="cp">    ((bitfield_field32_t){                                                    \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_MASK, \</span>
+<span class="cp">        .index =                                                              \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_PERF_COUNTER_1_PERF_COUNTER_1_OFFSET})</span>
+
+<span class="c1">// Set bits in the cluster-local CLINT. Writing a 1 at location i sets the</span>
+<span class="c1">// cluster-local interrupt</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_REG_OFFSET 0x30</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_MASK 0xffffffff</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_OFFSET 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_FIELD         \</span>
+<span class="cp">    ((bitfield_field32_t){                                                \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_MASK, \</span>
+<span class="cp">        .index = SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_SET_CL_CLINT_SET_OFFSET})</span>
+
+<span class="c1">// Clear bits in the cluster-local CLINT. Writing a 1 at location i clears</span>
+<span class="c1">// the cluster-local interrupt</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_REG_OFFSET 0x38</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_MASK 0xffffffff</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_OFFSET 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_FIELD         \</span>
+<span class="cp">    ((bitfield_field32_t){                                                    \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_MASK, \</span>
+<span class="cp">        .index =                                                              \</span>
+<span class="cp">            SNITCH_CLUSTER_PERIPHERAL_CL_CLINT_CLEAR_CL_CLINT_CLEAR_OFFSET})</span>
+
+<span class="c1">// Hardware barrier register. Loads to this register will block until all</span>
+<span class="c1">// cores have</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_REG_OFFSET 0x40</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_MASK 0xffffffff</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_OFFSET 0</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_FIELD         \</span>
+<span class="cp">    ((bitfield_field32_t){                                            \</span>
+<span class="cp">        .mask = SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_MASK, \</span>
+<span class="cp">        .index = SNITCH_CLUSTER_PERIPHERAL_HW_BARRIER_HW_BARRIER_OFFSET})</span>
+
+<span class="c1">// Controls prefetching of the instruction cache.</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_REG_OFFSET 0x48</span>
+<span class="cp">#define SNITCH_CLUSTER_PERIPHERAL_ICACHE_PREFETCH_ENABLE_ICACHE_PREFETCH_ENABLE_BIT \</span>
+<span class="cp">    0</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// extern &quot;C&quot;</span>
+<span class="cp">#endif</span>
+<span class="cp">#endif  </span><span class="c1">// _SNITCH_CLUSTER_PERIPHERAL_REG_DEFS_</span>
+<span class="w">        </span><span class="c1">// End generated register defines for snitch_cluster_peripheral</span>
+</code></pre></div>
+<hr />
+<p>Updated on 2021-12-02 at 20:35:44 +0000</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.01824240.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      
+    
+  </body>
+</html>
